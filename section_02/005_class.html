@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <style>
+        .red {
+            color: red;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <div id="app">
+            <h1 :class="classObject">Hello</h1>
+            <h1 :class="[{red:isActive}, bg]">Hello</h1>
+            <button @click="isActive = !isActive">切り替え</button>
+
+            <h1 :style="{color:textColor, 'background-color':bgColor}">Hello</h1>
+            <h1 :style="styleObject">Hello</h1>
+            <h1 :style="[baseStyles, styleObject]">Hello</h1>
+        </div>
+
+        <script src="005_class.js"></script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>現在{{count}}回クリックされています。</p>
+            <button v-on:click="countUp(2)">カウントアップ</button>
+            <button v-on:[event]="countUp(2)">カウントアップ2</button>
+            <button @click="countUp(2)">カウントアップ3</button>
+
+            <p v-on:mousemove="changeMousePosition($event, 10)">
+                マウスを載せてください。
+                <span v-on:mousemove.stop>ここは反応させたくない。</span>
+            </p>
+            <p>X:{{x}}, Y:{{y}}</p>
+
+            <p><a v-on:click.prevent href="https://google.com">Google</a></p>
+
+            <p><input v-on:keyup.enter.space="myAlert" type="text" name="text" id="text" /></p>
+        </div>
+        <script src="002_von.js"></script>
+    </body>
+</html>

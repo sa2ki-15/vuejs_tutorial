@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{counter}}</p>
+            <p>{{lessThanThreeComputed}}</p>
+            <p>{{lessThanThreeMethod()}}</p>
+            <button @click="counter += 1">+1</button>
+
+            <p>{{otherCounter}}</p>
+            <button @click="otherCounter += 1">関係ない+1</button>
+        </div>
+
+        <script src="004_computed.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{message}}</p>
+            <p v-once>{{message}}</p>
+
+            <p>{{number + 3}}</p>
+            <p v-text="number"></p>
+
+            <p>{{ok ? "YES" : "NO"}}</p>
+
+            <p>{{sayHi()}}</p>
+
+            <p>{{html}}</p>
+            <p v-html="html"></p>
+
+            <p>
+                <a v-bind:href="url">Google</a>
+                <a :href="url">Google</a>
+                <a :[attrubute]="url">Google</a>
+            </p>
+
+            <p>
+                <a v-bind="{href:urlTwitter, id:number}">Twitter</a>
+                <a v-bind="twitterObject">Twitter</a>
+            </p>
+        </div>
+        <script src="001_directive.js"></script>
+    </body>
+</html>
