@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{localEmail}}</p>
+        <p>{{localEmailMethod()}}</p>
+
+        <div>算出プロパティ: {{randomc}}</div>
+        <div>メソッド: {{randomm()}}</div>
+        <div>現在日時: {{currentDate}}</div>
+        <form>
+            <input type="button" value="クリック" v-on:click="onClick" />
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="js/compute.js"></script>
+</body>
+</html>
