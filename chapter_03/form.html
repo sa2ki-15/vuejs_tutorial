@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label for="name">氏名：</label>
+            <input type="text" id="name" v-model="myName">
+            <div>こんにちは、{{myName}} さん！</div>
+            <hr><br>
+
+            <label for="date">日付：</label>
+            <input type="date" id="date" v-model="date">
+            <div>選択した日付は{{date}} です</div>
+            <hr><br>
+
+            <label for="range">範囲：</label>
+            <input type="range" id="range" min="0" max="100" step="10" v-model="range">
+            <div>選択した範囲は{{range}} です</div>
+            <hr><br>
+
+            <label for="color">色：</label>
+            <input type="color" id="color" v-model="color">
+            <div>選択した色は{{color}} です</div>
+            <hr><br>
+
+            <label for="dog">いぬ：</label>
+            <input type="radio" id="dog" value="いぬ" v-model="pet"><br>
+            <label for="cat">ねこ：</label>
+            <input type="radio" id="cat" value="ねこ" v-model="pet"><br>
+            <label for="rabbit">うさぎ：</label>
+            <input type="radio" id="rabbit" value="うさぎ" v-model="pet"><br>
+            <div>選択したペットは{{pet}} です</div>
+            <hr><br>
+
+            <label for="agree">同意する：</label>
+            <input type="checkbox" id="agree" v-model="agree">
+            <div>回答は{{agree}} です</div>
+            <hr><br>
+
+            <label for="windows">windows：</label>
+            <input type="checkbox" id="windows" value="windows" v-model="os"><br>
+            <label for="mac">mac：</label>
+            <input type="checkbox" id="mac" value="mac" v-model="os"><br>
+            <label for="linux">linux：</label>
+            <input type="checkbox" id="linux" value="linux" v-model="os"><br>
+            <div>選択したOSは {{os}} です</div>
+            <hr><br>
+
+            <select id="os2" v-model="os2">
+                <option value="">使用しているOSは？</option>
+                <option value="windows">windows</option>
+                <option value="mac">mac</option>
+                <option value="linux">linux</option>
+            </select>
+            <div>選択したOSは {{os2}} です</div>
+            <hr><br>
+
+            <select id="os3" multiple v-model="os3">
+                <option value="">使用しているOSは？</option>
+                <option value="windows">windows</option>
+                <option value="mac">mac</option>
+                <option value="linux">linux</option>
+            </select>
+            <div>選択したOSは {{os3}} です</div>
+            <hr><br>
+
+            <input type="file" ref="uploadfile" @change="onChange">
+            <div>{{uploadMessage}}</div>
+            <hr><br>
+
+            <label for="temperature">サウナ温度：</label>
+            <input type="text" id="temperature" v-model.number="temperature" @change="onChangeRound">
+            <div>サウナの温度は {{temperature}} です</div>
+            <hr><br>
+
+            <label for="memo">トリムメモ：</label>
+            <input type="text" id="memo" v-model.trim="memo" @change="onChangeTrim">
+            <hr><br>
+
+            <label for="name2">氏名：</label>
+            <input type="text" id="name2" v-model.lazy="myName">
+            <div>こんにちは、{{myName}} さん！</div>
+            <hr><br>
+
+            <label for="mail">メールアドレス：</label>
+            <textarea id="mail"
+                      :value="mails.join(';')"
+                      @input="mails=$event.target.value.split(';')"></textarea>
+            <ul>
+                <li v-for="mail in mails">{{mail}}</li>
+            </ul>
+            <hr><br>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

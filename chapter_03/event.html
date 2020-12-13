@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="onClick">クリック</button>
+        <button @click="onClick">クリック(省略形)</button>
+        <p>{{current}}</p>
+
+        <img :src="path" alt="ロゴ" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+        <img :src="errorPath" alt="NoImage" @error="onError">
+
+<!--        mouseenter/mouseleave = 外側要素のみ発火、mouseover/mouseout = 内側要素にも発火-->
+<!--        <div id="outer" @mouseenter="onMouseIn" @mouseleave="onMouseOut">-->
+        <div id="outer" @mouseover="onMouseIn" @mouseout="onMouseOut">
+            外(outer)
+            <p id="inner">内(inner)</p>
+        </div>
+        <div v-html="mouseResult"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/event.js"></script>
+</body>
+</html>

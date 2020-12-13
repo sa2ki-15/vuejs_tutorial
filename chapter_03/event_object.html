@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <div id="area" @mousemove="onMouseMove">
+            <br /><br /><br /><br /><br />
+            screen: {{screenX}} / {{screenY}} <br /> <!-- デスクトップのスクリーン全体 -->
+            page: {{pageX}} / {{pageY}} <br /> <!-- ブラウザのページ全体 -->
+            client: {{clientX}} / {{clientY}} <br /> <!-- ブラウザが現在表示している部分全体(画面スクロールなど) -->
+            offset: {{offsetX}} / {{offsetY}} <br /> <!-- 要素全体 -->
+        </div>
+<!--        引数ありの関数にイベント情報も渡す必要がある場合はVue規定の$eventを第2引数として明示的に渡す-->
+        <button @click="onClick('こんにちは', $event)">コンソールへメッセージ</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/event_object.js"></script>
+</body>
+</html>
