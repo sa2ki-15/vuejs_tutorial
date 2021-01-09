@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <form>
+            <!--v-ifによる分岐処理-->
+            <label for="show">表示/非表示</label>
+            <input type="checkbox" id="show" v-model="show" />
+            <div id="panel" v-if="show">
+                <h3>日本語について</h3>
+                <p>あいうえおかきくえこさしすせそ</p>
+            </div>
+            <div v-else>
+                <h3>現在非表示です。</h3>
+            </div>
+
+            <!--複数の分岐処理-->
+            <!--v-ifでは条件に合致しない要素はDOMから破棄される-->
+            <!--つまり、v-ifでは条件に合致するまで要素を出力(描画)しない-->
+            <label for="holiday">祝日：</label><br />
+            <select id="holiday" v-model="holiday">
+                <option value="">祝日を選択してください</option>
+                <option value="new">元旦</option>
+                <option value="child">こどもの日</option>
+                <option value="culture">文化の日</option>
+            </select>
+            <div v-if="holiday == 'new'">1月1日。元旦。</div>
+            <div v-else-if="holiday == 'child'">5月5日。子供の日。</div>
+            <div v-else-if="holiday == 'culture'">11月3日。文化の日。</div>
+            <div v-else>何も選択されてません</div>
+
+            <!--key属性のよる要素の指定-->
+            <!--key属性がないとinput-text要素が同じものとみなされ変化がないとされてしまう-->
+            <!--つまり、入力値が残存してしまう-->
+            <fieldset>
+                <legend>支払方法</legend>
+                クレジットカード：
+                <input type="radio" name="pay" value="credit" v-model="pay">
+                銀行振込：
+                <input type="radio" name="pay" value="bank" v-model="pay">
+                <hr>
+                <div v-if="pay == 'credit'">
+                    カード番号：
+                    <input type="text" key="credit">
+                </div>
+                <div v-else-if="pay == 'bank'" key="bank">
+                    口座番号：
+                    <input type="text">
+                </div>
+            </fieldset>
+
+            <!--showによる表示切替処理-->
+            <!--display:noneによる表示切替のため、非表示時もDOM上に要素が残る-->
+            <!--表示非表示を頻繁に切り替える時は描画コストを抑えるため、v-ifではなくv-showを使う-->
+            <label for="show2">表示/非表示</label>
+            <input type="checkbox" id="show2" v-model="show2" />
+            <div id="panel2" v-show="show2">
+                <h3>日本語について</h3>
+                <p>あいうえおかきくえこさしすせそ</p>
+            </div>
+
+            <!--forによるループ処理-->
+            <table class="table">
+                <th>No</th><th>ISBN</th><th>書籍名</th><th>価格</th>
+                <tr v-for="(book, i) in books">
+                    <td>{{i + 1}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}円</td>
+                </tr>
+            </table>
+
+            <!--特定のプロパティで絞り込む場合は算出プロパティを利用する-->
+            <table class="table">
+                <th>No</th><th>ISBN</th><th>書籍名</th><th>価格</th>
+                <tr v-for="(book, i) in expensiveBooks">
+                    <td>{{i + 1}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}円</td>
+                </tr>
+            </table>
+
+            <!--key, valueを取り出すことも可能-->
+            <div v-for="book in books">
+                <ul v-for="(value, key) in book">
+                    <li>{{key}} : {{value}}</li>
+                </ul>
+            </div>
+
+            <!--複数要素をループ出力したい場合はtemplateを使用する-->
+            <template v-for="s in songs">
+                <header>{{s.title}}</header>
+                <div>{{s.lyrics}}</div>
+                <footer>{{s.composer}}</footer>
+            </template>
+
+
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/control.js"></script>
+</body>
+</html>

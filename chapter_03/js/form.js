@@ -7,6 +7,7 @@ let app = new Vue({
         color: '#000000',
         pet: 'うさぎ',
         agree: false,
+        agree2: false,
         os: [],
         os2: '',
         os3: [],
