@@ -31,10 +31,14 @@
             <!--
             テンプレート(v-text)はtextContentプロパティを設定
             v-htmlはinnerHtmlを設定
-            v-cloakはマスタッシュ構文初期化時の画面ちらつきを防止する
             -->
             <p>{{message}}</p>
             <p v-html="message"></p>
+
+            <!--
+            v-cloakはマスタッシュ構文初期化時の画面ちらつきを防止する
+            v-textであれば属性なので初期化前の式が露出することがないためそれでもOK
+            -->
             <p v-cloak>{{message}}</p>
 
             <!-- v-once は初期化の一度のみバインド -->

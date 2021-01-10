@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+</head>
+<body>
+    <div id="app">
+        <!--バブリングの制御-->
+        <div id="parent" @click="onParentClick">
+            親要素
+            <div id="current" @click.self.stop="onCurrentClick">
+                現在要素
+                <div id="child" @click="onChildClick">
+                    子要素
+                </div>
+            </div>
+        </div>
+
+        <!--キーイベントの制御-->
+        <form>
+            <label for="name">氏名：</label>
+            <input type="text" id="name" v-model="name" @keyup.ctrl.space="help">
+        </form>
+
+        <!--マウスイベントの制御-->
+        <div id="main" @click.right.prevent="onRightClick" @click.left="onLeftClick"
+             style="border: solid black; width: 600px; height:300px">
+            この領域でコンテキストメニューを表示します。
+        </div>
+        <ul style="list-style: none;" :style="pos" v-show="show">
+            <li><a href="">ヘルプ</a></li>
+            <li><a href="">使い方</a></li>
+            <li><a href="">掲示板</a></li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/event_propagation.js"></script>
+</body>
+</html>

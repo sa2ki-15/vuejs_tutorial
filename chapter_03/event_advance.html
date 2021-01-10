@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+</head>
+<body>
+    <div id="app">
+        <form @submit="onSubmit">
+            <!-- 無条件でキャンセルするときは.prevent修飾子を使う -->
+            <div id="main" @contextmenu.prevent style="border: solid black; width: 200px; height:100px">
+                この領域ではコンテキストメニューを表示できません。
+            </div>
+
+            <!-- 条件があるときはJS側でpreventDefaultを呼び出す -->
+            <label for="email">メールアドレス：</label>
+            <input type="email" id="email" name="email">
+            <input type="submit" value="送信">
+            <br><br>
+
+            <!-- .onceは一度のみイベントを呼び出す -->
+            <input type="button" value="結果表示" @click.once="onClick">
+            <p>今日の運勢は{{result}}点です。</p>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/event_advance.js"></script>
+</body>
+</html>
