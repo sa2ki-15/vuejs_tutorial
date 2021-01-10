@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+    <div id="app">
+        <form>
+            <label for="memo">メモ：</label>
+            <input type="text" id="memo" v-bind="attrs">
+
+            <div v-bind:text-content.prop="text"></div>
+
+            <!-- 属性の動的変更 -->
+            <select v-model="attr">
+                <option value="height">高さ</option>
+                <option value="width">幅</option>
+            </select>
+            <label for="size">サイズ：</label>
+            <input type="text" id="size" v-model="size"><br>
+            <img src="https://www.web-deli.com/image/logo.gif" v-bind:[attr]="size">
+
+            <!--
+            テンプレート(v-text)はtextContentプロパティを設定
+            v-htmlはinnerHtmlを設定
+            v-cloakはマスタッシュ構文初期化時の画面ちらつきを防止する
+            -->
+            <p>{{message}}</p>
+            <p v-html="message"></p>
+            <p v-cloak>{{message}}</p>
+
+            <!-- v-once は初期化の一度のみバインド -->
+            <label for="name">氏名</label>
+            <input type="text" id="name" v-model="name">
+            <div v-once>{{name}}さんは1度のみバインド</div>
+            <div>{{name}}さんはデータバインディングされる</div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/bind.js"></script>
+</body>
+</html>
