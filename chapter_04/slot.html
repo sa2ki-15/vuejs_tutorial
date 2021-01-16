@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <local-my-hello>鈴木</local-my-hello>
+        <local-my-hello></local-my-hello>
+        <br>
+        <my-slot>
+            <template v-slot:header>
+                <h3>ようこそ、Vue.jsへ</h3>
+            </template>
+
+            <p>一緒に勉強しましょう。</p>
+
+            <template #footer>
+                <span>連絡先：XXX</span>
+            </template>
+
+            <p>質問は掲示板へどうぞ。</p>
+        </my-slot>
+        <br>
+        <my-book>
+            <template v-slot="slotProp">
+                {{slotProp.book.title}} : {{slotProp.book.price}} 円
+            </template>
+        </my-book>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        window.Vue || document.write('<script src="../lib/vue.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="js/slot.js"></script>
+</body>
+</html>
